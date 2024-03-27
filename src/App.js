@@ -55,7 +55,7 @@ function MoleculeViewer({ molData }) {
       })
       .catch((error) => console.error('An error occurred:', error));
 
-      const fetch3DData = fetch(apiEndpoint+'process_smiles_3d', {
+      const fetch3DData = fetch(apiEndpoint+'/process_smiles_3d', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ smiles: smilesString }),
