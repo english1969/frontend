@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 //import $3Dmol from '3dmol'; // Import 3Dmol.js directly
 import './App.css';
 
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:5000';
 const $3Dmol = require('3dmol');
 
 function MoleculeViewer({ molData }) {
@@ -41,7 +42,7 @@ function MoleculeViewer({ molData }) {
 
       alert("fetching data");
 
-      const fetch2DImage = fetch('http://localhost:5000/process_smiles_2d', {
+      const fetch2DImage = fetch(apiEndpoint+'/process_smiles_2d', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ smiles: smilesString }),
@@ -54,7 +55,7 @@ function MoleculeViewer({ molData }) {
       })
       .catch((error) => console.error('An error occurred:', error));
 
-      const fetch3DData = fetch('http://localhost:5000/process_smiles_3d', {
+      const fetch3DData = fetch(apiEndpoint+'process_smiles_3d', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ smiles: smilesString }),
